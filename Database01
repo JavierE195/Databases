@@ -1,0 +1,36 @@
+CREATE DATABASE [DataBase01]
+
+CREATE TABLE TblClothing
+(
+	ID int IDENTITY (1,1) NOT NULL PRIMARY KEY,
+	ItemID int NOT NULL,
+	Price decimal (5, 2) NOT NULL,
+	ColorID int NOT NULL
+ )
+
+ALTER TABLE TblClothing ADD  CONSTRAINT DF_TblClothing_ItemID  DEFAULT (1) FOR ItemID
+ 
+ALTER TABLE TblClothing ADD  CONSTRAINT DF_TblClothing_ColorID  DEFAULT (1) FOR ColorID
+
+CREATE TABLE TblColor
+(
+	ID int NOT NULL PRIMARY KEY,
+	Color nvarchar(50) NOT NULL
+)
+
+CREATE TABLE TblItem
+(
+	ID int NOT NULL PRIMARY KEY,
+	Item nvarchar(50) NOT NULL
+)
+
+ALTER TABLE TblClothing  ADD  CONSTRAINT Clothing_ColorID_FK 
+FOREIGN KEY(ColorID) REFERENCES TblColor (ID)
+
+ALTER TABLE TblClothing ADD  CONSTRAINT Clothing_ItemID_FK 
+FOREIGN KEY(ItemID) REFERENCES TblItem (ID)
+
+
+
+
+
