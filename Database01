@@ -31,6 +31,15 @@ ALTER TABLE TblClothing ADD  CONSTRAINT Clothing_ItemID_FK
 FOREIGN KEY(ItemID) REFERENCES TblItem (ID)
 
 
+Use [DataBase01]
+GO
+
+Select TblClothing.ID, TblItem.Item, TblClothing.Price, TblColor.Color
+From TblClothing
+Inner Join TblItem ON TblClothing.ItemID = TblItem.ID 
+Inner Join TblColor ON TblClothing.ColorID = TblColor.ID
+
+
 
 
 
