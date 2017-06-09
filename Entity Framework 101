@@ -1,0 +1,27 @@
+// Inserting data in a table (adding an object to a class)
+Table recipe = new Table
+                {
+                  Name = "Taco Salad"
+                };
+                context.Tables.Add(recipe);
+                context.SaveChanges();
+  
+// Selecting data from a table (printing objects from classes)
+Table recipe = context.Tables.FirstOrDefault(r => r.Id == 1);
+                Console.WriteLine(recipe.Name);
+                Console.ReadKey();
+               
+// Update a row (update an object)
+ Table recipe = context.Tables.FirstOrDefault(r => r.Id == 1);
+                recipe.Name = "Regular Salad";
+                context.SaveChanges();
+                      
+// Deleting a row from the table (removing objects from a class)
+Table recipe = context.Tables.FirstOrDefault(r => r.Id == 1);
+                context.Tables.Remove(recipe);
+                context.SaveChanges();
+                
+//Inserting data in a table with foreign keys
+Table2 category = context.Categories.FirstOrDefault(c => c.Name = "Lunch");
+context.Recepies.Add(new Table1 {Name = "Pizza", Table2 = category});
+context.SaveChanges();
